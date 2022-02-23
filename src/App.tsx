@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
+import { Hand } from './model/Hand';
+import { FileInput } from './components/FileInput/FileInput';
+import { PokerHandsContainer } from './components/PokerHandsContainer/PokerHandsContainer';
+import { getFileContents } from './services/FileService';
+import { parseHandsFromString } from './services/PokerHandService';
 import './App.css';
 
 function App() {
+  const [hands, setHands] = useState<Hand[]>([]);
+
+  const processFileContents = (fileContents: string) => {
+    const pokerHandsParsed = parseHandsFromString(fileContents);
+    console.log('pokerHandsParsed', pokerHandsParsed);
+    setHands(pokerHandsParsed);
+  }
+
+  const uploadFile = (file: File) => {
+    getFileContents(file, processFileContents);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {"<PokerHands />"}
+      <FileInput onUpload={uploadFile}/>
+      <PokerHandsContainer hands={hands} />
     </div>
   );
 }
