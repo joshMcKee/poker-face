@@ -73,7 +73,6 @@ export class Hand {
             }
             return 0;
         });
-        console.log('Sorted cards', this.cards);
     }
 
     public getCardNames() {
@@ -90,13 +89,35 @@ export class Hand {
         this.sortLowToHigh();
 
         const cardNames = this.getCardNames();
-        console.log(cardNames);
         const cardNamesString = cardNames.join('');
-        console.log(cardNamesString);
         if (potentialStraightString.indexOf(cardNamesString) > -1) {
             return true;
         }
 
         return false;
+    }
+
+    public checkForStraightV2() {
+        this.sortLowToHigh();
+        const acesHigh = this.acesHigh();
+        const numericCardValues: number[] = [];
+
+        this.cards.forEach(card => {
+            numericCardValues.push(card.getNumericValue(acesHigh));
+        });
+
+        const penultimateIndex = (numericCardValues.length - 1);
+        for (let i = 0; i < penultimateIndex; i++) {
+            const currentCardValue = numericCardValues[i];
+            const nextCardValue = numericCardValues[i + 1];
+
+            if (nextCardValue - currentCardValue === 1) {
+                continue;
+            }
+
+            return false;
+        }
+
+        return true;
     }
 }
