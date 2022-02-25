@@ -7,16 +7,15 @@ interface PokerHandsContainerProps {
     hands: Hand[];
 }
 
-export const PokerHandsContainer: FC<PokerHandsContainerProps> = ({ hands }) => {
-    console.log('hands', hands);
-    return (
-        <div>
-            <table className="poker-hand-container">
+export const PokerHandsContainer: FC<PokerHandsContainerProps> = ({ hands }) => (
+    <div>
+        <table className="poker-hand-container">
+            <tbody>
                 { hands.map((hand, index) =>
-                    <tr key={index}><PokerHand hand={hand}/></tr>
+                    <tr key={index} className="poker-hand-row"><PokerHand hand={hand}/></tr>
                 )}
-            </table>
-        </div>
-    )
-}
+            </tbody>
+        </table>
+    </div>
+)
 

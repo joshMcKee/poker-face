@@ -11,7 +11,6 @@ function App() {
 
   const processFileContents = (fileContents: string) => {
     const pokerHandsParsed = parseHandsFromString(fileContents);
-    console.log('pokerHandsParsed', pokerHandsParsed);
     setHands(pokerHandsParsed);
   }
 
