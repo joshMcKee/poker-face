@@ -5,9 +5,10 @@ interface FileInputProps {
     onUpload: (selectedFile: File) => void;
 }
 
+// Component to accept file upload
 export const FileInput: FC<FileInputProps> = ({ onUpload }) => (
     <div>
-        Please select your poker hands file
+        Please select your poker hands file <br />
         <input type="file" onChange={(e) => handleFileSelect(e, onUpload)} data-testid="file-input" />
     </div>
 );

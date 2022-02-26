@@ -12,6 +12,7 @@ export class Hand {
         this.cards = newCards;
     }
 
+    // Returns acesHigh = true if the hand contains a King
     public acesHigh(): boolean {
         let acesHigh = false;
         this.cards.forEach(card => {
@@ -23,6 +24,7 @@ export class Hand {
         return acesHigh;
     }
 
+    // Returns true if all cards in the hand have the same suit
     public checkForFlush(): boolean {
         const suits: string[] = [];
         this.cards.forEach(card => {
@@ -37,6 +39,7 @@ export class Hand {
         return false;
     }
 
+    // Returns an array of objects containing card names and the number of occurences for each name
     public checkNameOccurences() {
         const nameOccurences: { name: string, count: number; }[] = [];
         this.cards.forEach(card => {
@@ -59,6 +62,7 @@ export class Hand {
         return nameOccurences;
     }
 
+    // Sorts the cards from low to high based on the numeric value returned by Card.getNumericValue
     public sortLowToHigh() {
         const acesHigh = this.acesHigh();
         this.cards = this.cards.sort((a, b) => {
@@ -75,6 +79,7 @@ export class Hand {
         });
     }
 
+    // Returns an array of the names of all cards in the hand. Array can contain duplicate names
     public getCardNames() {
         const cardNames: string[] = [];
         this.cards.forEach(card => {
@@ -84,6 +89,7 @@ export class Hand {
         return cardNames;
     }
 
+    // Gets the sorted list of card names, joins them and then checks if the resulting string exists in the potentialStraightString
     public checkForStraight() {
         const potentialStraightString = 'A23456789TJQKA';
         this.sortLowToHigh();
@@ -97,6 +103,7 @@ export class Hand {
         return false;
     }
 
+    // More robust method of checking for a straight. Gets the numeric values of the sorted cards and compares each card to the next to determine if it is a valid straight
     public checkForStraightV2() {
         this.sortLowToHigh();
         const acesHigh = this.acesHigh();

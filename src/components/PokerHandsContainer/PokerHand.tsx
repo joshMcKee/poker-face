@@ -6,6 +6,7 @@ interface PokerHandProps {
     hand: Hand;
 }
 
+// Component to map each card in the hand to a td and display the name of the hand
 export const PokerHand: FC<PokerHandProps> = ({ hand }) => {
     return (
         <>

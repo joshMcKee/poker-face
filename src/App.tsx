@@ -10,8 +10,7 @@ function App() {
   const [hands, setHands] = useState<Hand[]>([]);
 
   const processFileContents = (fileContents: string) => {
-    const pokerHandsParsed = parseHandsFromString(fileContents);
-    setHands(pokerHandsParsed);
+    setHands(parseHandsFromString(fileContents));
   }
 
   const uploadFile = (file: File) => {

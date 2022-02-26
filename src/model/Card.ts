@@ -7,6 +7,7 @@ export class Card {
         this.suit = description[1];
     }
 
+    // Converts the card name to a numeric value. For face cards this is based on where they come in a straight. Ace depends on the acesHigh arguments 
     getNumericValue(acesHigh: boolean) {
         let numericValue;
         switch (this.name) {
