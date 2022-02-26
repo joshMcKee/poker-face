@@ -9,6 +9,6 @@ interface FileInputProps {
 export const FileInput: FC<FileInputProps> = ({ onUpload }) => (
     <div>
         Please select your poker hands file <br />
-        <input type="file" onChange={(e) => handleFileSelect(e, onUpload)} data-testid="file-input" />
+        <input type="file" accept="text/plain" onChange={(e) => handleFileSelect(e, onUpload)} data-testid="file-input" />
     </div>
 );
