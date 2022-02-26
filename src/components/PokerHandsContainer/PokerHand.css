@@ -1,0 +1,7 @@
+.poker-card-H, .poker-card-D {
+    color: red;
+}
+
+.poker-card-C, .poker-card-S {
+    color: black;
+}

@@ -19,7 +19,9 @@ function App() {
 
   return (
     <div className="App">
-      {"<PokerHands />"}
+      <div className="banner">
+        {"<PokerHands />"}
+      </div>
       <FileInput onUpload={uploadFile}/>
       <PokerHandsContainer hands={hands} />
     </div>
